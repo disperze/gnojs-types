@@ -1,7 +1,7 @@
 {
   "name": "gnojs-types",
   "version": "0.1.0",
-  "description": "gnoland protobufs",
+  "description": "gnoland protobufs types",
   "author": "Giancarlos Salas <me@ginsalex.dev>",
   "homepage": "https://github.com/disperze/gnojs-types#readme",
   "license": "MIT",
