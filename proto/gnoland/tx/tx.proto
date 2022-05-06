@@ -14,7 +14,7 @@ message Tx {
 }
 
 message Fee {
-  uint64 gas_wanted = 1;
+  int64 gas_wanted = 1;
 
   string gas_fee = 2;
 }

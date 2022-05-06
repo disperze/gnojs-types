@@ -120,13 +120,13 @@ export const Tx = {
 };
 
 function createBaseFee(): Fee {
-  return { gasWanted: Long.UZERO, gasFee: "" };
+  return { gasWanted: Long.ZERO, gasFee: "" };
 }
 
 export const Fee = {
   encode(message: Fee, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (!message.gasWanted.isZero()) {
-      writer.uint32(8).uint64(message.gasWanted);
+      writer.uint32(8).int64(message.gasWanted);
     }
     if (message.gasFee !== "") {
       writer.uint32(18).string(message.gasFee);
@@ -142,7 +142,7 @@ export const Fee = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.gasWanted = reader.uint64() as Long;
+          message.gasWanted = reader.int64() as Long;
           break;
         case 2:
           message.gasFee = reader.string();
@@ -158,8 +158,8 @@ export const Fee = {
   fromJSON(object: any): Fee {
     return {
       gasWanted: isSet(object.gasWanted)
-        ? Long.fromString(object.gasWanted)
-        : Long.UZERO,
+        ? Long.fromValue(object.gasWanted)
+        : Long.ZERO,
       gasFee: isSet(object.gasFee) ? String(object.gasFee) : "",
     };
   },
@@ -167,7 +167,7 @@ export const Fee = {
   toJSON(message: Fee): unknown {
     const obj: any = {};
     message.gasWanted !== undefined &&
-      (obj.gasWanted = (message.gasWanted || Long.UZERO).toString());
+      (obj.gasWanted = (message.gasWanted || Long.ZERO).toString());
     message.gasFee !== undefined && (obj.gasFee = message.gasFee);
     return obj;
   },
@@ -177,7 +177,7 @@ export const Fee = {
     message.gasWanted =
       object.gasWanted !== undefined && object.gasWanted !== null
         ? Long.fromValue(object.gasWanted)
-        : Long.UZERO;
+        : Long.ZERO;
     message.gasFee = object.gasFee ?? "";
     return message;
   },
