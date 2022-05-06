@@ -2,9 +2,9 @@ syntax = "proto3";
 package gnoland.vm;
 
 message MemPackage {
-    string name = 1;
-    string path = 2;
-	repeated MemFile files = 3; 
+  string name = 1;
+  string path = 2;
+  repeated MemFile files = 3;
 }
 
 message MemFile {

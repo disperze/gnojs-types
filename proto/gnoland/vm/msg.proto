@@ -1,14 +1,16 @@
 syntax = "proto3";
 package gnoland.vm;
 
-// m_addpkg
+import "gnoland/vm/types.proto";
+
+// vm.m_addpkg
 message MsgAddPackage {
 	string creator = 1;
 	MemPackage package = 2;
 	string deposit = 3;
 }
 
-// m_call
+// vm.m_call
 message MsgCall {
 	string caller = 1;
 	string send = 2;
