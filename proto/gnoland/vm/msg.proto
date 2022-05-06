@@ -1,0 +1,18 @@
+syntax = "proto3";
+package gnoland.vm;
+
+// m_addpkg
+message MsgAddPackage {
+	string creator = 1;
+	MemPackage package = 2;
+	string deposit = 3;
+}
+
+// m_call
+message MsgCall {
+	string caller = 1;
+	string send = 2;
+	string pkg_path = 3;
+	string func = 4;
+	repeated string args = 5;
+}
